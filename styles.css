@@ -1,231 +1,696 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https: //fonts.googleapis.com/css2?family=poppins: wight@300;400;500;600;700;800;900 display=swap');
 
-*{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
+*
+{
+    margin: 0;
+    padding: 0;
+    /*list-style: none;*/
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+    
 }
 
-body{
-	background: #c4c4c4;
-	font-size: 14px;
-	line-height: 20px;
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.resume_wrapper{
-	display: flex;
-	width: 800px;
-	margin: 50px auto;
-	background: #fff;
-	padding: 10px;
+header {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-.resume_wrapper .resume_left{
-	width: 35%;
-	background: #26252d;
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.resume_wrapper .resume_left .resume_image{
-	width: 100%;
+header .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.resume_wrapper .resume_left .resume_image img{
-	width: 100%;
-	display: block;
+header .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
 }
 
-.resume_wrapper .resume_title{
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 16px;
-	margin-bottom: 10px;
-	letter-spacing: 4px;
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.resume_wrapper .resume_left .resume_info{
-	color: #84838b;
+header nav ul li {
+    margin: 0 10px;
 }
 
-.resume_wrapper .resume_left .resume_bottom{
-	padding: 20px 30px;
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.resume_wrapper .resume_item{
-	padding: 20px 0;
-	border-bottom: 1px solid #0175b2;
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+.hero {
+    text-align: left;
+    padding: 20px;
+    margin-top: 5px; /* Adjust for fixed header */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+    margin: 10px 0;
+    border-radius: 5px;
 }
 
-.resume_wrapper  .resume_item:last-child{
-	border-bottom: 0;
+.hero-two {
+    text-align: left;                 /* Center aligns text for focus and balance */
+    background-color: #b2ebf2;          /* Soft, inviting blue background */
+    padding: 60px 20px;                 /* Generous padding for a spacious layout */
+    margin: 20px auto;                  /* Centered margin for maximum focus, with space at the top */
+    border: 2px solid #b2ebf2;          /* Subtle border to enhance the hero section's contour */
+    border-radius: 12px;                /* Smooth, rounded corners for a modern look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    color: #333;                        /* High-contrast text for readability */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Sleek, professional font family */
+    font-size: 16px;                    /* Increased font size for readability and impact */
+    font-weight: 600;                   /* Medium-bold weight for clear section titles */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for interactive elements */
+    max-width: 1200px;                  /* Maximum width control for large screens */
+    width: 100%;                        /* Full width to utilize space efficiently */
+    box-sizing: border-box;             /* Includes padding and border in the element's total width and height */
 }
 
-.resume_wrapper .resume_left .resume_namerole{
-	display: none;
+.hero:hover {
+    background-color: #f0f0f0; /* A lighter shade on hover for a tactile feel */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for a lifted effect */
 }
 
-.resume_wrapper .resume_namerole .name{
-	font-size: 20px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-	margin-bottom: 5px;
-	letter-spacing: 4px;
+
+@media (max-width: 768px) {
+    .hero {
+        font-size: 15px;                /* Smaller font size for mobile devices */
+        padding: 40px 10px;             /* Adjust padding for smaller screens */
+    }
 }
 
-.resume_wrapper .resume_left .resume_namerole .role{
-	color: #84838b;
+@media (max-width: 768px) {
+    .post div {
+        flex-direction: column;
+    }
+
+    .post-content, .post-image {
+        padding-right: 0;
+    }
+
+    .post-image {
+        max-width: 100%;
+        margin-top: 10px; /* Adds space between the text and the image on smaller screens */
+    }
 }
 
-.resume_wrapper .resume_left .resume_contact .resume_info:last-child{
-	 margin-top: 10px;
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    header .menu-toggle {
+        display: flex;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #003366;
+    }
+
+    header nav ul.active {
+        display: flex;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
 }
 
-.resume_wrapper .resume_left .resume_contact .resume_subtitle{
-	color: #fff;
-	margin-bottom: 2px;
+
+/* Adjust columns for mobile */
+@media (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+    }
+
+    .column {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
 }
 
-.resume_wrapper .resume_left .resume_skills .skills_list{
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 5px;
+
+main {
+    padding: 80px 20px 20px;
 }
 
-.resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p{
-	position: relative;
-	width: 125px;
-    height: 20px;
-    background: #fff;
+h1, h2, h3 {
+    color: #003366;
+}
+h1 {
+    font-size: 2.5em; /* Increase font size for h1 */
 }
 
-.resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p span{	
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: #0175b2;
-	width: 100%;
-	height: 100%;
+h2 i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.2em; /* Adjust size of the icon */
 }
 
-.resume_wrapper .resume_right{
-	width: 65%;
-	padding: 20px 40px;
-	color: #26252d;
+
+section {
+    margin: 40px 0;
 }
 
-.resume_wrapper .resume_right .resume_namerole .name{
-	color: #26252d;
-	font-size: 32px;
+img {
+    width: 100%;
+    max-width: 400px; /* Adjust this value as needed */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centers the image */
+    border-radius: 8px; /* Optional: rounds the corners of the image */
 }
 
-.resume_wrapper .resume_right .resume_namerole .role{
-	font-size: 14px;
-	text-transform: uppercase;
+.project img {
+    max-width: 25%;
+    height: auto;
+    padding: 2px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-.resume_wrapper .resume_right .resume_item .resume_title{
-	color: #26252d;
+footer {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
-.resume_wrapper .resume_right .resume_data{
-	display: flex;
+
+footer {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
-.resume_wrapper .resume_right .resume_data .year{
-	padding-right: 35px;
-	width: 115px;
-	position: relative;
+footer p {
+    margin: 0;
+    padding: 10px;
+    font-size: 1em;
 }
 
-.resume_wrapper .resume_right .resume_data .content{
-	padding-left: 35px;
-	margin-bottom: 20px;
-	width: calc(100% - 115px);
+footer i {
+    margin-right: 8px;
 }
 
-.resume_wrapper .resume_right .resume_data .year:before{
-	content: "";
-	position: absolute;
-	top: 5px;
-	right: 0;
-	width: 10px;
-	height: 10px;
-	background: #fff;
-	border: 1px solid #26252d;
-	border-radius: 50%;
+footer a {
+    color: #fff;
+    text-decoration: none;
 }
 
-.resume_wrapper .resume_right .resume_data .year:after{
-	content: "";
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+form {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"], 
+form input[type="email"], 
+form textarea {
+    padding: 12px; /* Increased padding for better touch support */
+    border-radius: 4px; /* Rounded corners */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in the width */
+    font-size: 16px; /* Increased font size for better readability */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+}
+
+form input[type="text"]:focus, 
+form input[type="email"]:focus, 
+form textarea:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Add shadow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+form textarea {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 150px; /* Set minimum height */
+    max-height: 300px; /* Set maximum height */
+}
+
+
+
+form input[type="submit"] {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #002244;
+}
+
+
+/* Profile specific styles */
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-header div {
+    flex-grow: 1;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-header p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.section-title {
+    font-size: 20px;
+    margin: 20px 0;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 0px;
+}
+
+.section-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section-content li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-content li:last-child {
+    border-bottom: none;
+}
+
+.section-content a {
+    color: #003366;
+    text-decoration: none;
+}
+
+.section-content a:hover {
+    text-decoration: underline;
+}
+
+
+/* Two-column layout for research section */
+.columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    flex: 0 0 48%;
+}
+
+
+
+/* blog post */ 
+.post {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    display: flow;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+.post h3 {
+    margin-top: 10;
+}
+
+.post p {
+    margin: 1px 0;
+    text-align: justify;
+
+
+}
+
+.post strong {
+    color: #0056b3;
+}
+
+
+
+.post div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.post a {
+    flex-shrink: 0;
+}
+
+
+.post-image {
+    width: 100%;
+    height: auto;
+    max-width: 75%; /* Adjust size as necessary */
+    cursor: pointer;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    cursor: pointer; /* Indicates the image is clickable */
+}
+
+
+.post-text-content {
+    flex: 1; /* Allows text content to take up the available space */
+    padding-right: 20px; /* Spacing between text content and image */
+}
+
+
+
+.post-date {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-author {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+
+/* new */ 
+.post-content {
+    flex: 1;
+    padding-right: 10px; /* Space between text and image */
+}
+
+
+
+#pagination button {
+    margin: 3px;
+    padding: 8px 12px;
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+#pagination button:hover {
+    background-color: #ddd;
+}
+
+#pagination button:focus {
+    outline: none;
+    border-color: #555;
+}
+
+#pagination button[style*="font-weight:bold;"] {
+    background-color: #aaa;
+    color: white;
+}
+
+
+
+
+
+
+/* Categories */ 
+#categories-section {
+    padding: 20px;
+    background-color: #f4f4f4;
+    position: relative;
+    display: inline-block;
+}
+
+
+#categories-list li:hover {
+    background-color: #e9e9e9;
+}
+
+
+#categories-list {
+    list-style-type: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    display: flex; /* Aligns children (li) in a row */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line if space runs out */
+    justify-content: flex-start; /* Aligns items to the start of the flex container */
+    align-items: center; /* Vertically aligns items in their line */
+}
+
+#categories-list li {
+    padding: 10px; /* Adds space inside each list item */
+    margin-right: 10px; /* Adds space between items */
+}
+
+#categories-list li a {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Ensures the links use the current text color */
+    font-weight: bold; /* Makes the text bold */
+}
+
+#categories-list li a:hover {
+    text-decoration: underline; /* Adds underline on hover for better interaction visibility */
+}
+
+
+
+
+
+
+
+
+
+
+#dropdown-button {
+    padding: 10px;
+    background: #f4f4f4;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
     position: absolute;
-    top: 17px;
-    right: 4px;
-    width: 3px;
-    height: 90%;
-    background: #0175b2;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-.resume_wrapper .resume_right .resume_data:last-child .year:after{
-	display: none;
+.dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-.resume_wrapper .resume_right .resmue_interests .resume_info{
-	display: flex;
-	justify-content: space-between;
-	text-align: center;
+.dropdown-content li:hover {
+    background-color: #f1f1f1;
 }
 
-.resume_wrapper .resume_right .resmue_interests .interests .int_icon{
-	font-size: 38px;
-	color: #0175b2;
-	margin-bottom: 10px;
+.dropdown-content li a {
+    display: block;
+    color: black;
+    text-align: left;
 }
 
 
-@media screen and (max-width: 800px){
-	.resume_wrapper .resume_right .resume_namerole{
-		display: none;
-	}
-	.resume_wrapper .resume_left .resume_namerole{
-		display: block;
-	}
-	.resume_wrapper{
-		width: 95%;
-		margin: 10px auto;
-		flex-direction: column;
-	}
-	.resume_wrapper .resume_left,
-	.resume_wrapper .resume_right{
-		width: 100%;
-	}
+
+
+
+#contact .columns {
+    display: flex;
+    justify-content: space-between; /* Ensures there is space between the columns */
+    align-items: flex-start; /* Aligns items at the top of the container */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
 }
 
-@media screen and (max-width: 424px){
-	.resume_wrapper .resume_right{
-		padding: 20px 30px;
-	}
-	.resume_wrapper .resume_right .resume_data{
-		flex-direction: column;
-	}
-	.resume_wrapper .resume_right .resume_data .year{
-		padding: 0;
-		margin-bottom: 5px;
-		width: 100%;
-		color: #0175b2;
-	}
-	.resume_wrapper .resume_right .resume_data .year:before,
-	.resume_wrapper .resume_right .resume_data .year:after{
-		display: none;
-	}
-	.resume_wrapper .resume_right .resume_data .content{
-		width: 100%;
-		padding: 0;
-	}
-	.resume_wrapper .resume_right .resmue_interests .interests .int_icon{
-		font-size: 24px;
-	}
+.contact-info, .contact-form {
+    flex: 1; /* Each takes equal width */
+    min-width: 300px; /* Minimum width before wrapping */
+    padding: 10px; /* Adds some padding around each column */
 }
+
+ul {
+    list-style-type: none; /* Removes bullets from the list */
+    padding: 0; /* Removes padding */
+}
+
+ul li {
+    margin-bottom: 10px; /* Adds a bottom margin for each list item */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Makes form elements take the full width */
+    box-sizing: border-box; /* Includes padding and border in the width */
+    margin-bottom: 10px; /* Adds space between form fields */
+}
+
+
+
+/* Additional */ 
+.aditional strong {
+    color: #003366;
+}
+.aditional h3 {
+    color: #0056b3;
+}
+
+
+/* CSS */
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+
+/*-----------social-media--------------*/
+
+#social-media
+{
+    padding: 1px 0;
+}
+#social-media p
+{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Add some space between the icons */
+}
+
+.social-icons img {
+    width: 60px;
+    transition: 0.5s;
+}
+
+.social-icons a:hover img {
+    transform: translateY(-10px);
+}
+
+
+
+
+
+
+
+/*-----------navbar--------------*/
+
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.navbar-brandimg {
+    height: 4px;
+    padding-left: 20px;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+.navbar-nav li a {
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+}
+
+.navbar-toggler-icon {
+    color: #fff;
+    font-size: 30px !important;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+
 

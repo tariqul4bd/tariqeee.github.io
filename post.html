@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tariqul Islam's academic portfolio in Electrical and Electronics Engineering, featuring research interests, publications, projects, and contact information.">
+    <meta name="keywords" content="Tariqul Islam, Electrical Engineering, Research, Publications, Projects, Portfolio">
+    <title>Tariqul Islam - Blog Post</title>
+    <link rel="stylesheet" href="styles/post-styles.css">
+        <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul id="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#news">News Articles</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+
+
+<!-- Home Section -->
+
+
+
+<section id="home" class="hero">
+    <div class="container-post">
+    <div class="column-post first-column">
+                         <section id="blog-post">
+                        <div id="post-content"></div>
+                    </section>
+    </div>
+
+
+    <div class="column-post second-column" >
+        <!-- Content for the second column (30%) -->
+
+
+                    <aside id="right-sidebar">
+                        <h3>Latest Posts</h3>
+                        <div id="latest-posts-right" class="latest-posts-container"></div>
+                    </aside>    
+
+
+                    <aside id="right-sidebar">
+                                        <!-- projects Section -->
+        <div >
+                <h3> Projects</h3>
+            <div id="projects-posts" class="latest-posts-container"></div>
+        </div>
+                    </aside>
+    </div>
+
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 Tariqul Islam. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCZu15W4gl6fAzqf_4Df1gjnCl8T-6pug8",
+            authDomain: "my-portfolio-7fac5.firebaseapp.com",
+            projectId: "my-portfolio-7fac5",
+            storageBucket: "my-portfolio-7fac5.appspot.com",
+            messagingSenderId: "888146704516",
+            appId: "1:888146704516:web:2ff7e2cfa3ac2e2f806ad1",
+            measurementId: "G-0FBZ0BWGN0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        function displayPost(postId) {
+            const postRef = ref(database, 'academic/' + postId);
+            onValue(postRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    const post = snapshot.val();
+                    displayPostContent(post);
+                } else {
+                    const postRefBlog = ref(database, 'blogPosts/' + postId);
+                    onValue(postRefBlog, (snapshotBlog) => {
+                        if (snapshotBlog.exists()) {
+                            const postBlog = snapshotBlog.val();
+                            displayPostContent(postBlog);
+                        } else {
+                            console.log('Post not found');
+                        }
+                    });
+                }
+            });
+        }
+
+        function displayPostContent(post) {
+            const postContentDiv = document.getElementById('post-content');
+            postContentDiv.innerHTML = `
+                <div class="post">
+                    <h3>${post.title}</h3>
+                    <p>${post.category} <strong class="post-date">Date:</strong> ${post.submittedAt}</p>
+                    <p class="post-author">By ${post.author || 'Unknown'}</p>
+                    <img src="${post.imageUrl}" alt="${post.title}" class="post-image">
+                    <p>${post.content}</p>
+                </div>`;
+        }
+
+
+
+function displayLatestPosts(side) {
+    const postsRef = ref(database, 'blogPosts');
+    onValue(postsRef, (snapshot) => {
+        const posts = snapshot.val();
+        if (!posts) {
+            console.error('No posts available.');
+            return; // Exit if no posts
+        }
+
+        const latestPostsDiv = document.getElementById(`latest-posts-${side}`);
+        if (!latestPostsDiv) {
+            console.error(`Element not found: latest-posts-${side}`);
+            return; // Exit if element is not found
+        }
+
+        latestPostsDiv.innerHTML = ''; // Clear previous content
+
+        // Convert posts object to an array, enrich with IDs, and sort by date
+        const sortedPosts = Object.keys(posts)
+            .map(id => ({ id, ...posts[id] }))
+            .sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+
+        // Display the latest posts, limited to the top 5
+        sortedPosts.slice(0, 5).forEach(post => {
+            latestPostsDiv.innerHTML += `
+                <div class="latest-post">
+                    <h4><a href="post.html?id=${post.id}">${post.title}</a></h4>
+                    <img src="${post.imageUrl || 'default-image.png'}" alt="${post.title}" class="latest-post-image">
+                </div>`;
+        });
+    }, (error) => {
+        console.error('Failed to fetch posts:', error);
+    });
+}
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            if (postId) {
+                displayPost(postId);
+            }
+            displayLatestPosts('left');
+            displayLatestPosts('right');
+        });
+
+
+
+
+
+
+function displayProjectPosts() {
+    const postsRef = ref(database, 'academic');
+    onValue(postsRef, (snapshot) => {
+        const posts = snapshot.val();
+        const blogPostsDiv = document.getElementById('projects-posts');
+        blogPostsDiv.innerHTML = '';
+
+        // Filter and sort posts by date
+        const sortedPosts = Object.keys(posts)
+            .map(id => ({ id, ...posts[id] }))
+            .filter(post => post.category === "Projects")
+            .sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+
+        // Display the sorted posts
+        sortedPosts.forEach(post => {
+            const shortContent = post.content.length > 200 
+                ? post.content.substring(0, 200) + '... <a href="post.html?id=' + post.id + '" class="read-more">Read more</a>' 
+                : post.content;
+            blogPostsDiv.innerHTML += `
+                <div class="post">
+                    <div class="post-text-content">
+                        <p>${shortContent}</p>
+                    </div>
+                    <a href="post.html?id=${post.id}">
+                        <img src="${post.imageUrl}" alt="${post.title}" class="post-image">
+                    </a>
+                </div>`;
+        });
+    });
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    displayProjectPosts();
+});
+
+
+
+
+    </script>
+</body>
+</html>
