@@ -1,0 +1,119 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container-post {
+    display: flex;
+    width: 100%;  /* Ensures the container takes full width of its parent */
+}
+
+.column-post {
+    margin: 10px;  /* Keeps your margin as specified */
+}
+
+.first-column {
+    flex: 7;  /* Takes up 70% of the space */
+}
+
+.second-column {
+    flex: 3;  /* Takes up 30% of the space */
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+    .container-post {
+        display: flex;
+        flex-direction: column; /* Ensures the container is oriented in a vertical layout */
+    }
+
+    .first-column {
+        order: 1; /* Ensures the first column comes first */
+        flex: 1 0 100%; /* Takes full width of the container */
+    }
+
+    .second-column {
+        order: 2; /* Makes the second column come after the first */
+        flex: 1 0 100%; /* Ensures the second column also takes full width */
+        display: block; /* Makes sure the second column is visible */
+    }
+}
+
+
+h3 {
+    color: #333;
+}
+
+h4 {
+    color: #333;
+    text-align: justify;
+
+}
+
+
+/* Sidebar styles */
+aside {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+}
+
+aside h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+.latest-post .row {
+    display: flex;
+    width: 100%;
+    align-items: center; /* Keeps items aligned vertically in the center */
+    justify-content: space-between; /* Ensures spacing across the full width of the row */
+    padding: 10px; /* Padding around the row for better spacing */
+}
+
+.column.first-column {
+    flex: 70%; /* First column takes up 70% of the space */
+    padding-right: 20px; /* Optional padding for spacing between columns */
+}
+
+.column.second-column {
+    flex: 30%; /* Second column takes up 30% of the space */
+}
+
+.latest-post-image {
+    width: 200px; /* Makes the image fill the column width */
+    height: auto; /* Keeps the image aspect ratio intact */
+}
+
+
+
+/* Blog post styles */
+#blog-post {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+}
+
+#blog-post h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.post-date, .post-author {
+    font-size: 14px;
+    color: #666;
+}
+
+.post-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px 0;
+}
+
+
