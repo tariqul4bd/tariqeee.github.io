@@ -1,0 +1,174 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #0056b3;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 70px auto 50px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.projects-section {
+    padding: 20px;
+}
+
+.post {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    padding: 2px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 1px;
+    flex-direction: column;
+}
+
+.post-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.post h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #0056b3;
+}
+
+.post h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post h3 a:hover {
+    text-decoration: underline;
+}
+
+.post p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.post-date, .post-author {
+    font-style: italic;
+    color: #999;
+}
+
+.post-image {
+    width: 10%;
+    max-width: 30px;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+    transform: scale(1.05);
+}
+
+.read-more {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .post {
+        flex-direction: row;
+    }
+
+    nav ul {
+        justify-content: flex-start;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #fff;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .post-content {
+        padding-right: 0;
+    }
+}
+
+footer {
+    background: #0056b3;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
