@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
+
     <header>
         <nav>
             <div class="menu-toggle" id="menu-toggle">
@@ -21,18 +23,15 @@
                 <div class="bar"></div>
             </div>
             <ul id="nav-list">
-                <li><a href="https://www.tariqul4bd.com">Home</a></li>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="blog.html">Blogs</a></li>
                 <li><a href="#news">News Articles</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
-                <li><a href="#contact">Contact</a></li>
+
             </ul>
         </nav>
     </header>
+
+    
     <main>
 
 
@@ -43,11 +42,15 @@
 
 <section id="home" class="hero">
     <div class="container-post">
+
     <div class="column-post first-column">
                          <section id="blog-post">
+
                         <div id="post-content"></div>
                     </section>
     </div>
+
+
 
 
     <div class="column-post second-column" >
@@ -85,6 +88,8 @@
         <p>&copy; 2024 Tariqul Islam. All rights reserved.</p>
     </footer>
 
+
+
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -102,6 +107,8 @@
 
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
+
+
 
         function displayPost(postId) {
             const postRef = ref(database, 'academic/' + postId);
@@ -123,6 +130,9 @@
             });
         }
 
+
+
+
         function displayPostContent(post) {
             const postContentDiv = document.getElementById('post-content');
             postContentDiv.innerHTML = `
@@ -134,6 +144,9 @@
                     <p>${post.content}</p>
                 </div>`;
         }
+
+
+
 
 
 
@@ -184,10 +197,6 @@ function displayLatestPosts(side) {
         });
 
 
-
-
-
-
 function displayProjectPosts() {
     const postsRef = ref(database, 'academic');
     onValue(postsRef, (snapshot) => {
@@ -224,8 +233,6 @@ function displayProjectPosts() {
 document.addEventListener('DOMContentLoaded', function () {
     displayProjectPosts();
 });
-
-
 
 
     </script>
