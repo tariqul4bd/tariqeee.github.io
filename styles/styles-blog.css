@@ -1,0 +1,191 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 100%;  /* Ensures the container takes full width of its parent */
+}
+
+
+
+/*-----------header--------------*/
+header {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/*-----------navbar--------------*/
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.navbar-brandimg {
+    height: 4px;
+    padding-left: 20px;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+.navbar-nav li a {
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+}
+
+.navbar-toggler-icon {
+    color: #fff;
+    font-size: 30px !important;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    .post {
+        margin: 20px 0;
+        padding: 15px;
+        display: flex; /* Ensuring flex layout */
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start of the flex container */
+    }
+
+    .post div {
+        padding-right: 0; /* Remove padding-right on mobile for full width utilization */
+        flex: 1 0 100%; /* Ensure divs within post take full width */
+    }
+
+    .post a {
+        width: 100%; /* Full width links */
+    }
+
+    .post-image {
+        width: 100%;
+        max-width: 100%; /* Ensure image does not exceed its container */
+        margin: 10px 0; /* Add some margin around the image for better spacing */
+    }
+}
+
+
+
+
+.post-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Preserving other styles as initially set for all views */
+.post {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.post h3 {
+    margin-top: 0;
+}
+
+.post p, .post strong {
+    margin: 10px 0;
+}
+
+.post strong {
+    color: #0056b3;
+}
+
+.post-date, .post-author {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-author {
+    color: #888;
+    margin-top: -5px;
+}
+
+
+
